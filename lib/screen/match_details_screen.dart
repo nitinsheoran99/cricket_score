@@ -1,25 +1,198 @@
+
+import 'package:cricket_score/model/cricket_info.dart';
 import 'package:cricket_score/model/match_info.dart';
 import 'package:flutter/material.dart';
 
-class MatchDetailsScreen extends StatefulWidget {
-   MatchDetailsScreen({super.key,required this.matchInfo});
-  MatchInfo? matchInfo;
+class MatchDetailScreen extends StatefulWidget {
+  const MatchDetailScreen(
+      {super.key, required this.information, required this.matchInfo});
+
+  final CricketInfo? information;
+  final MatchInfo matchInfo;
+
   @override
-  State<MatchDetailsScreen> createState() => _MatchDetailsScreenState();
+  State<MatchDetailScreen> createState() => _MatchDetailScreenState();
 }
 
-class _MatchDetailsScreenState extends State<MatchDetailsScreen> {
+class _MatchDetailScreenState extends State<MatchDetailScreen> {
+  MatchInfo? matchInfoLisi;
+  CricketInfo? matchInformation;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    matchInfoLisi = widget.matchInfo;
+    matchInformation = widget.information;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Match Details"),
+        title: Row(
+          children: [
+            Text(widget.matchInfo.teamInfo![0].shortname.toString()),
+            const SizedBox(
+              width: 7,
+            ),
+            Text(widget.matchInfo.teamInfo![1].shortname.toString()),
+          ],
+        ),
       ),
-      body: Column(
-        children: [
-         Text(widget.matchInfo!.score.toString()),
-        ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Info',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+                const Divider(),
+                const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  children: [
+                    const Text('Match Type'),
+                    const Spacer(),
+                    Text(widget.matchInfo.matchType.toString()),
+                  ],
+                ),
+                const Divider(),
+                const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  children: [
+                    const Text('Data'),
+                    const Spacer(),
+                    Text(widget.matchInfo.date.toString()),
+                  ],
+                ),
+                const Divider(),
+                const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  children: [
+                    const Text('Time'),
+                    const Spacer(),
+                    Text(widget.matchInfo.dateTimeGMT.toString()),
+                  ],
+                ),
+                const Divider(),
+                const SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Venue'),
+                    // const Spacer(),
+                    Flexible(
+                        child: Text(widget.matchInfo.venue.toString())),
+                  ],
+                ),
+                const Divider(),
+                const SizedBox(
+                  height: 16,
+                ),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        const Text('History'),
+                        const Spacer(),
+                        Text(widget.information!.hitsToday.toString()),
+                      ],
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        const Text('Query Time'),
+                        const Spacer(),
+                        Text(widget.information!.queryTime.toString()),
+                      ],
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        const Text('Hits Limit'),
+                        const Spacer(),
+                        Text(widget.information!.hitsLimit.toString()),
+                      ],
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        const Text('Cache'),
+                        const Spacer(),
+                        Text(widget.information!.cache.toString()),
+                      ],
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        const Text('Credits'),
+                        const Spacer(),
+                        Text(widget.information!.credits.toString()),
+                      ],
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        const Text('Hits Today'),
+                        const Spacer(),
+                        Text(widget.information!.hitsToday.toString()),
+                      ],
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        const Text('Sever'),
+                        const Spacer(),
+                        Text(widget.information!.server.toString()),
+                      ],
+                    ),
+                    const Divider(),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        const Text('Total Rows'),
+                        const Spacer(),
+                        Text(widget.information!.totalRows.toString()),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -46,7 +46,7 @@ class _MatchInfoScreenState extends State<MatchInfoScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return MatchDetailsScreen(matchInfo: MatchInfo(),
+                        return MatchDetailScreen(information: matchApiResponse!.info, matchInfo: data,
 
                         );
                       },
