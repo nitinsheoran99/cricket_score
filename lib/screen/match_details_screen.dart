@@ -36,6 +36,10 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
             const SizedBox(
               width: 7,
             ),
+            Text("VS",style: TextStyle(fontSize: 16),),
+            const SizedBox(
+              width: 7,
+            ),
             Text(widget.matchInfo.teamInfo![1].shortname.toString()),
           ],
         ),
