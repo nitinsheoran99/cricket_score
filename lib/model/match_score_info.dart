@@ -14,11 +14,11 @@ class MatchScoreInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['r'] = this.r;
-    data['w'] = this.w;
-    data['o'] = this.o;
-    data['inning'] = this.inning;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['r'] = r;
+    data['w'] = w;
+    data['o'] = o;
+    data['inning'] = inning;
     return data;
   }
 }

@@ -36,17 +36,17 @@ class ScoreInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['hitsToday'] = this.hitsToday;
-    data['hitsUsed'] = this.hitsUsed;
-    data['hitsLimit'] = this.hitsLimit;
-    data['credits'] = this.credits;
-    data['server'] = this.server;
-    data['offsetRows'] = this.offsetRows;
-    data['totalRows'] = this.totalRows;
-    data['queryTime'] = this.queryTime;
-    data['s'] = this.s;
-    data['cache'] = this.cache;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['hitsToday'] = hitsToday;
+    data['hitsUsed'] = hitsUsed;
+    data['hitsLimit'] = hitsLimit;
+    data['credits'] = credits;
+    data['server'] = server;
+    data['offsetRows'] = offsetRows;
+    data['totalRows'] = totalRows;
+    data['queryTime'] = queryTime;
+    data['s'] = s;
+    data['cache'] = cache;
     return data;
   }
 }
